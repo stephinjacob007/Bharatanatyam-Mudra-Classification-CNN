@@ -1,4 +1,4 @@
-# 🩰 Bharatanatyam Mudra (Hand Gesture) Recognition
+# Bharatanatyam Mudra (Hand Gesture) Recognition
 
 An end-to-end deep learning pipeline to automatically classify single-hand gestures (*mudras*) from Bharatanatyam, a major form of Indian classical dance. This repository explores three distinct Convolutional Neural Network (CNN) strategies—ranging from an optimized scratch architecture to sophisticated transfer learning configurations—identifies the top performer, evaluates it with advanced interpretability metrics (Grad-CAM), and refines it via intentional fine-tuning.
 
@@ -32,7 +32,7 @@ The pipeline leverages the **Bharatanatyam Mudra Dataset** (released under the M
 ### Class Distribution
 The dataset is largely equitable and robust, showing highly consistent instances across all 28 classes, minimizing historical vulnerabilities to minority class under-representation.
 
-![Class Distribution](image_eadacb.png)
+![Class Distribution](Images/class_distribution.png)
 
 ---
 
@@ -47,7 +47,7 @@ Models were evaluated over an identical, stratified test slice ($15\%$ of total 
 | **Model B: MobileNetV2** | 64.09% | 1.1918 | 0.6393 | 2.43 M | ~0.9 mins |
 | **Model C: EfficientNetB0**| 71.15% | 1.0677 | 0.7075 | 4.22 M | ~1.6 mins |
 
-![Model Performance Benchmarking](image_ead713.png)
+![Model Performance Benchmarking](Images/model_results.png)
 
 > 💡 **Key Takeaway:** Surprisingly, the targeted **Custom CNN (Model A)** substantially outperformed the frozen pre-trained backbones on this specific domain. This indicates that generic ImageNet features do not automatically translate well to highly isolated, stylized hand-pose silhouettes without deeper layer modifications.
 
@@ -56,13 +56,13 @@ Models were evaluated over an identical, stratified test slice ($15\%$ of total 
 ### Phase 1 Training History
 
 #### Model A: Custom CNN (Winner)
-![Model A Metrics](image_eada8d.png)
+![Model A Metrics](Images/custom_cnn_loss_accuracy.png)
 
 #### Model B: MobileNetV2
-![Model B Metrics](image_eada52.png)
+![Model B Metrics](Images/mobilenet_loss_accuracy.png)
 
 #### Model C: EfficientNetB0
-![Model C Metrics](image_ead9f2.png)
+![Model C Metrics](Images/efficientnet_loss_accuracy.png)
 
 ---
 
@@ -73,7 +73,7 @@ Prior to fine-tuning, the initial Custom CNN was subjected to detailed diagnosti
 ### Initial Confusion Matrix
 The macro accuracy landscape shows strong diagonal dominance, though predictable clusters of mild confusion appear between structural shapes like *Katakamukha_1* and *Katakamukha_2*.
 
-![Initial Confusion Matrix](image_eada19.png)
+![Initial Confusion Matrix](Images/cnn_model_confusion_matrix.png)
 
 ---
 
@@ -84,7 +84,7 @@ Because the champion model was our from-scratch Custom CNN, "fine-tuning" was ad
 ### Post-Fine-Tuning History
 The model shows excellent asymptotic stability without cross-over signs of validation divergence or severe overfitting.
 
-![Fine Tuning Progress](image_ead9fb.png)
+![Fine Tuning Progress](Images/fine_tuned_loss_accuracy.png)
 
 ### Performance Comparison
 
